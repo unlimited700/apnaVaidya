@@ -1,0 +1,47 @@
+# ===============================
+# = DATA SOURCE
+# ===============================
+
+# Set here configurations for the database connection
+
+# Connection url for the database
+spring.datasource.url =<%= @spring_datasource_url %>
+
+# Username and password
+spring.datasource.username =<%= @spring_datasource_username %>
+spring.datasource.password =<%= @spring_datasource_password %>
+
+# Mysql connector
+spring.datasource.driverClassName =<%= @spring_datasource_driverclassname %>
+
+# ===============================
+# = JPA / HIBERNATE
+# ===============================
+
+# Use spring.jpa.properties.* for Hibernate native properties (the prefix is
+# stripped before adding them to the entity manager).
+
+# Specify the DBMS
+spring.jpa.database =<%= @spring_jpa_database %>
+
+# Show or not log for each sql query
+spring.jpa.show-sql =<%= @spring_jpa_show_sql %>
+
+# Hibernate ddl auto (create, create-drop, update): with "update" the database
+# schema will be automatically updated accordingly to java entities found in
+# the project
+spring.jpa.hibernate.ddl-auto =<%= @spring_jpa_hibernate_ddl_auto %>
+
+# Naming strategy
+spring.jpa.hibernate.naming-strategy =<%= @spring_jpa_hibernate_naming_strategy %>
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect =<%= @spring_jpa_properties_hibernate_dialect %>
+
+spring.datasource.testOnBorrow=<%= @spring_datasource_testonborrow %>
+spring.datasource.testOnReturn=<%= @spring_datasource_testonreturn %>
+spring.datasource.validationQuery=<%= @spring_datasource_validationquery %>
+spring.datasource.validationInterval=<%= @spring_datasource_validationinterval %>
+spring.datasource.max-idle=<%= @spring_datasource_max_idle %>
+spring.datasource.max-active=<%= @spring_datasource_max_active %>
+
