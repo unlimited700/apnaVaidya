@@ -115,11 +115,11 @@ public class ProblemSolutionServiceImpl implements ProblemSolutionService {
 		List<ProblemSolutionName> problemSolutionNameList = (List<ProblemSolutionName>) problemSolutionNameDao
 				.findAll();
 
-		for (ProblemSolutionName problemSolutionmName : problemSolutionNameList) {
+		for (ProblemSolutionName problemSolutionName : problemSolutionNameList) {
 			ProblemSolution problemSolution = new ProblemSolution();
 
-			List<Problem> problems = problemDao.findByProblem(problemSolutionmName.getProblem());
-			List<Solution> solutions = solutionDao.findBySolution(problemSolutionmName.getSolution());
+			List<Problem> problems = problemDao.findByProblem(problemSolutionName.getProblem());
+			List<Solution> solutions = solutionDao.findBySolution(problemSolutionName.getSolution());
 
 			Problem problem = null;
 			Solution solution = null;
