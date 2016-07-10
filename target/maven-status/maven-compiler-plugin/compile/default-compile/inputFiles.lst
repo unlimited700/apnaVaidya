@@ -17,6 +17,7 @@
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/SolutionRequest.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/Response.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/ProblemsDTO.java
+/home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/SolutionsNameDTO.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dao/ProblemSolutionDao.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/ProblemRequest.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/v1/service/ProblemService.java
@@ -26,6 +27,7 @@
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/ProblemSolutionList.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/DoseDTO.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/auth/TokenAuthServiceImpl.java
+/home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/v1/service/ProblemRepository.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/ProblemSolutionsRequest.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dao/SolutionBewareDao.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/Enum/SolutionType.java
@@ -56,6 +58,7 @@
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/model/Solution.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/v1/controller/ProblemSolutionController.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/auth/TokenAuthService.java
+/home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/v1/service/SolutionRepository.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/RecommendationRequest.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/dto/RecommendedSolutionDTO.java
 /home/pradeep/apnavaidyaWorkspace/apnavaidya/src/main/java/com/apnavaidya/treasure/v1/service/RecommendationService.java

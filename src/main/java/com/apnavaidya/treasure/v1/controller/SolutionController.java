@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apnavaidya.treasure.dto.ProblemsDTO;
 import com.apnavaidya.treasure.dto.Response;
 import com.apnavaidya.treasure.dto.SolutionRequest;
+import com.apnavaidya.treasure.dto.SolutionsNameDTO;
 import com.apnavaidya.treasure.v1.service.SolutionService;
 
 @RestController
@@ -38,6 +40,20 @@ public class SolutionController {
 			e.printStackTrace();
 		}
 		LOG.info("Response returned to create solution with response {} ", new Object[] { response });
+		return response;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/v1/solutions", produces = "application/json", consumes = "application/json")
+	public SolutionsNameDTO getProblems() {
+		SolutionsNameDTO response = null;
+		LOG.info("Request received of fetching list of solutions");
+		try {
+			response = solutionService.getSolutions();
+		} catch (Exception e) {
+			LOG.error(" Error while fetching solutions " + e);
+			e.printStackTrace();
+		}
+		LOG.info("Response returned of fetching list of solutions {} ", new Object[] { response });
 		return response;
 	}
 

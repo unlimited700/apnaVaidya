@@ -42,7 +42,7 @@ public class ProblemController {
 		try {
 			response = problemService.getProblems();
 		} catch (Exception e) {
-			LOG.error(" Error while creating problems " + e);
+			LOG.error(" Error while fetching problems " + e);
 			e.printStackTrace();
 		}
 		LOG.info("Response returned of fetching list of problems {} ", new Object[] { response });

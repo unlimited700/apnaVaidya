@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ProblemsDTO extends Response {
 
-	List<String> problems;
+	private List<String> problems;
 
 	public List<String> getProblems() {
 		return problems;

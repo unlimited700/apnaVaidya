@@ -13,6 +13,10 @@ import com.apnavaidya.treasure.model.Problem;
 @RestResource(exported = false)
 public interface ProblemDao extends CrudRepository<Problem, Long> {
 
+	/*
+	 * problem column in problem table needs encryption to convert into hindi
+	 */
+
 	@Query(value = "select id from problem where problem in (:problems)", nativeQuery = true)
 	public List<BigInteger> getProblemIdsByProblems(@Param("problems") List<String> problems);
 

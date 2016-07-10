@@ -1,5 +1,9 @@
 package com.apnavaidya.treasure.dto;
 
+import javax.persistence.Convert;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ProblemSolutionDose {
 
 	private String problem;

@@ -8,11 +8,13 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import ch.qos.logback.classic.Logger;
 
 @Converter
+@Service
 public class DescriptionConvertor implements AttributeConverter<String, String> {
 
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(DescriptionConvertor.class);

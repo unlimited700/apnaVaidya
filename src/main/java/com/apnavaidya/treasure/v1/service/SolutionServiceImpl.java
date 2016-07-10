@@ -1,12 +1,18 @@
 package com.apnavaidya.treasure.v1.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apnavaidya.treasure.dao.SolutionDao;
 import com.apnavaidya.treasure.dto.SolutionDTO;
 import com.apnavaidya.treasure.dto.SolutionRequest;
+import com.apnavaidya.treasure.dto.SolutionsNameDTO;
+import com.apnavaidya.treasure.model.Problem;
 import com.apnavaidya.treasure.model.Solution;
+import com.apnavaidya.treasure.dto.ProblemsDTO;
 import com.apnavaidya.treasure.dto.Response;
 import com.apnavaidya.treasure.dto.SolutionRequest;
 
@@ -30,4 +36,27 @@ public class SolutionServiceImpl implements SolutionService {
 		}
 		return response;
 	}
+
+	@Override
+	public SolutionsNameDTO getSolutions() {
+		SolutionsNameDTO solutionsName = new SolutionsNameDTO();
+		try {
+
+			List<String> solutions = new ArrayList<String>();
+
+			List<Solution> solutionDaoList = (List<Solution>) solutionDao.findAll();
+
+			for (Solution solution : solutionDaoList) {
+				solutions.add(solution.getSolution());
+			}
+			solutionsName.setSolutions(solutions);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			solutionsName.setMessage("Exception Occured!!!");
+			solutionsName.setResponseCode(500);
+		}
+		return solutionsName;
+	}
+
 }

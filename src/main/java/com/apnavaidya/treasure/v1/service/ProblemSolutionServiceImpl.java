@@ -16,6 +16,7 @@ import com.apnavaidya.treasure.dao.SolutionDao;
 import com.apnavaidya.treasure.dto.ProblemSolutionDose;
 import com.apnavaidya.treasure.dto.ProblemSolutionList;
 import com.apnavaidya.treasure.dto.Response;
+import com.apnavaidya.treasure.model.DescriptionConvertor;
 import com.apnavaidya.treasure.model.Problem;
 import com.apnavaidya.treasure.model.ProblemSolution;
 import com.apnavaidya.treasure.model.ProblemSolutionName;
@@ -40,6 +41,12 @@ public class ProblemSolutionServiceImpl implements ProblemSolutionService {
 	@Autowired
 	private ProblemSolutionNameDao problemSolutionNameDao;
 
+	@Autowired
+	private ProblemRepository problemRepo;
+
+	@Autowired
+	private SolutionRepository solutionRepo;
+
 	@Override
 	public Response create(ProblemSolutionList problemSolutionList) {
 		Response response = new Response();
@@ -62,9 +69,9 @@ public class ProblemSolutionServiceImpl implements ProblemSolutionService {
 				if (null == problemSolutionDose)
 					throw new Exception("Null Value problemSolutionDose");
 
-				problems = problemDao.findByProblem(problemSolutionDose.getProblem());
+				problems = problemRepo.findByProblem(problemSolutionDose.getProblem());
 
-				if (null == problems) {
+				if (null == problems || problems.isEmpty()) {
 					problem = new Problem();
 					problem.setProblem(problemSolutionDose.getProblem());
 					problemDao.save(problem);
@@ -74,8 +81,8 @@ public class ProblemSolutionServiceImpl implements ProblemSolutionService {
 				}
 				probId = problem.getId();
 
-				solutions = solutionDao.findBySolution(problemSolutionDose.getSolution());
-				if (null == solutions) {
+				solutions = solutionRepo.findBySolution(problemSolutionDose.getSolution());
+				if (null == solutions || solutions.isEmpty()) {
 					solution = new Solution();
 					solution.setSolution(problemSolutionDose.getSolution());
 					solutionDao.save(solution);
@@ -118,8 +125,8 @@ public class ProblemSolutionServiceImpl implements ProblemSolutionService {
 		for (ProblemSolutionName problemSolutionName : problemSolutionNameList) {
 			ProblemSolution problemSolution = new ProblemSolution();
 
-			List<Problem> problems = problemDao.findByProblem(problemSolutionName.getProblem());
-			List<Solution> solutions = solutionDao.findBySolution(problemSolutionName.getSolution());
+			List<Problem> problems = problemRepo.findByProblem(problemSolutionName.getProblem());
+			List<Solution> solutions = solutionRepo.findBySolution(problemSolutionName.getSolution());
 
 			Problem problem = null;
 			Solution solution = null;

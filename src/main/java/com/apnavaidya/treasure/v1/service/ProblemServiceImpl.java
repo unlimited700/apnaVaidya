@@ -36,6 +36,9 @@ public class ProblemServiceImpl implements ProblemService {
 	@Autowired
 	private ProblemSymptomDao problemSymptomDao;
 
+	@Autowired
+	private ProblemRepository problemRepo;
+
 	public Response create(ProblemRequest problemRequest) {
 		Response response = new Response();
 
@@ -76,9 +79,9 @@ public class ProblemServiceImpl implements ProblemService {
 
 		for (ProblemSymptomName problemSymptomName : problemSymptomNameList) {
 			ProblemSymptom problemSymptom = new ProblemSymptom();
-			Problem symptom = problemDao.findByProblemAndProbType(problemSymptomName.getSymptom(),
+			Problem symptom = problemRepo.findByProblemAndProbType(problemSymptomName.getSymptom(),
 					ProblemType.SYMPTOM.toString());
-			List<Problem> problems = problemDao.findByProblem(problemSymptomName.getProblem());
+			List<Problem> problems = problemRepo.findByProblem(problemSymptomName.getProblem());
 			Problem problem = null;
 			try {
 				if (null != problems && !problems.isEmpty()) {

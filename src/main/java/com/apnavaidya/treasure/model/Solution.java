@@ -17,6 +17,7 @@ public class Solution {
 	private Long id;
 
 	@Column(name = "solution", columnDefinition = "varchar(255) NOT NULL")
+	@Convert(converter = DescriptionConvertor.class)
 	private String solution;
 
 	@Column(name = "sol_type", columnDefinition = "varchar(255) NOT NULL")
@@ -24,9 +25,11 @@ public class Solution {
 	private String solType;
 
 	@Column(name = "step", columnDefinition = "mediumtext")
+	@Convert(converter = DescriptionConvertor.class)
 	private String step;
 
 	@Column(name = "contradiction", columnDefinition = "mediumtext")
+	@Convert(converter = DescriptionConvertor.class)
 	private String contradiction;
 
 	public Long getId() {

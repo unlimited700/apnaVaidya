@@ -19,6 +19,7 @@ import com.apnavaidya.treasure.dao.RequestResponseDao;
 import com.apnavaidya.treasure.dto.RecommendationRequest;
 import com.apnavaidya.treasure.dto.RecommendationResponse;
 import com.apnavaidya.treasure.dto.RecommendedSolutionDTO;
+import com.apnavaidya.treasure.model.DescriptionConvertor;
 import com.apnavaidya.treasure.model.Problem;
 import com.apnavaidya.treasure.model.RequestResponse;
 import com.apnavaidya.treasure.v1.controller.RecommendationController;
@@ -33,6 +34,9 @@ public class RecommendationServiceImpl implements RecommendationService {
 	private ProblemDao problemDao;
 
 	@Autowired
+	private ProblemRepository problemRepo;
+
+	@Autowired
 	private ProblemSolutionDao problemSolutionDao;
 
 	@Autowired
@@ -40,6 +44,9 @@ public class RecommendationServiceImpl implements RecommendationService {
 
 	@Autowired
 	private ProblemSymptomDao problemSymptomDao;
+
+	@Autowired
+	private DescriptionConvertor convertor;
 
 	private final static int MAX_PROBLEM_SIZE = 10000000;
 
@@ -66,10 +73,10 @@ public class RecommendationServiceImpl implements RecommendationService {
 
 			List<String> problems = new ArrayList<String>();
 			for (String problem : recommendationRequest.getProblems()) {
-				problems.add(URLEncoder.encode(problem));
+				problems.add(problem);
 			}
 
-			List<BigInteger> probIds = problemDao.getProblemIdsByProblems(problems);
+			List<BigInteger> probIds = problemRepo.getProblemIdsByProblems(problems);
 
 			// Logic for problem diagnosis on the basis of input symptom...
 			// cur logic returns disease which having maximum occurance count in
@@ -120,23 +127,30 @@ public class RecommendationServiceImpl implements RecommendationService {
 
 			}
 
+			LOG.info(" problem Ids : ", new Object[] { probIds.toString() });
+
 			// getting recommendations...
 			List<Object[]> recommendedSolutions = problemSolutionDao.getRecommendation(probIds);
 
-			if (null == recommendedSolutions)
-				throw new Exception("RECOMMENDATION NOT FOUND");
+			LOG.info(" value in recommendedSolutions , {} ", new Object[] { recommendedSolutions });
 
-			LOG.info(" value in recommendedSolutions , {} ", new Object[] { recommendedSolutions.get(0) });
+			if (null == recommendedSolutions || recommendedSolutions.isEmpty())
+				throw new Exception("RECOMMENDATION NOT FOUND");
 
 			for (Object[] recommendedSolution : recommendedSolutions) {
 				RecommendedSolutionDTO solutionDTO = new RecommendedSolutionDTO();
 
 				// setting solutiondto with databases values...
-				solutionDTO.setSolution(URLDecoder.decode(recommendedSolution[0].toString()));
-				solutionDTO.setSolType(recommendedSolution[1].toString());
-				solutionDTO.setStep(recommendedSolution[2].toString());
-				solutionDTO.setDuration(recommendedSolution[3].toString());
-				solutionDTO.setDays(Integer.parseInt(recommendedSolution[4].toString()));
+				if (null != recommendedSolution[0])
+					solutionDTO.setSolution(convertor.convertToEntityAttribute(recommendedSolution[0].toString()));
+				if (null != recommendedSolution[1])
+					solutionDTO.setSolType(convertor.convertToEntityAttribute(recommendedSolution[1].toString()));
+				if (null != recommendedSolution[2])
+					solutionDTO.setStep(convertor.convertToEntityAttribute(recommendedSolution[2].toString()));
+				if (null != recommendedSolution[3])
+					solutionDTO.setDuration(recommendedSolution[3].toString());
+				if (null != recommendedSolution[4])
+					solutionDTO.setDays(Integer.parseInt(recommendedSolution[4].toString()));
 
 				if (solutionDTO.getSolType().equals(SolutionType.YOGA.toString())) {
 					recommendedYoga.add(solutionDTO);

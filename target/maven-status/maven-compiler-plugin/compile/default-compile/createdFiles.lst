@@ -1,4 +1,5 @@
 com/apnavaidya/treasure/model/RequestResponse.class
+com/apnavaidya/treasure/v1/service/ProblemRepository.class
 com/apnavaidya/treasure/model/SolutionBeware.class
 com/apnavaidya/treasure/dto/Request.class
 com/apnavaidya/treasure/dto/Response.class
@@ -12,6 +13,7 @@ com/apnavaidya/treasure/dto/RecommendationRequest.class
 com/apnavaidya/treasure/v1/controller/ProblemSolutionController.class
 com/apnavaidya/treasure/v1/controller/SolutionController.class
 com/apnavaidya/treasure/dto/SolutionBewareRequest.class
+com/apnavaidya/treasure/dto/SolutionsNameDTO.class
 com/apnavaidya/treasure/dao/SolutionBewareDao.class
 com/apnavaidya/treasure/dto/ProblemSolutionsRequest.class
 com/apnavaidya/treasure/auth/TokenAuthServiceImpl.class
@@ -35,6 +37,7 @@ com/apnavaidya/treasure/dto/ProblemSolutionDose.class
 com/apnavaidya/treasure/model/ProblemSymptom.class
 com/apnavaidya/treasure/dto/SolutionRequest.class
 com/apnavaidya/treasure/v1/service/SolutionServiceImpl.class
+com/apnavaidya/treasure/v1/service/SolutionRepository.class
 com/apnavaidya/treasure/model/DescriptionConvertor.class
 com/apnavaidya/treasure/dto/SolutionDTO.class
 com/apnavaidya/treasure/model/Dose.class
