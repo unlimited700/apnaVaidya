@@ -37,7 +37,7 @@ public class ProblemRepository {
 
 		int i = 0;
 		for (String problem : problems) {
-			problems.set(i, convertor.convertToDatabaseColumn(problem));
+			//problems.set(i, convertor.convertToDatabaseColumn(problem));
 			LOG.info( " value at i {} is {} , " ,new Object[] { i , problems.get(i) } ) ;
 			i++;
 		}

@@ -17,7 +17,7 @@ public class Problem {
 	private Long id;
 
 	@Column(name = "problem", columnDefinition = "varchar(255) NOT NULL")
-	@Convert(converter = DescriptionConvertor.class)
+	//@Convert(converter = DescriptionConvertor.class)
 	private String problem;
 
 	@Column(name = "prob_type", columnDefinition = "varchar(255) NOT NULL")
